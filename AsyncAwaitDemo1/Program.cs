@@ -16,7 +16,7 @@ namespace AsyncAwaitDemo1
             {
                 sb.AppendLine($"Hello {i}");
             }
-            await File.WriteAllTextAsync(filename, sb.ToString());
+            File.WriteAllTextAsync(filename, sb.ToString());
             Console.WriteLine("Before reading from file");
             var result = await File.ReadAllTextAsync(filename);
             Console.WriteLine(result);
