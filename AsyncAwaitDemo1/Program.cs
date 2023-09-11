@@ -9,14 +9,26 @@ namespace AsyncAwaitDemo1
     {
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Before writing to file");
+            // Console.WriteLine("Before writing to file");
+            // var filename = @"C:\Users\s9740\RiderProjects\AspNetCore\AsyncAwaitDemo1\test.txt";
+            // var sb = new StringBuilder();
+            // for (int i = 0; i < 1000; i++)
+            // {
+            //     sb.AppendLine($"Hello {i}");
+            // }
+            // File.WriteAllTextAsync(filename, sb.ToString()); // This is not awaited
+            // Console.WriteLine("Before reading from file");
+            // var result = await File.ReadAllTextAsync(filename);
+            // Console.WriteLine(result); Console.WriteLine("Before writing to file");
+            
+            
             var filename = @"C:\Users\s9740\RiderProjects\AspNetCore\AsyncAwaitDemo1\test.txt";
             var sb = new StringBuilder();
             for (int i = 0; i < 1000; i++)
             {
                 sb.AppendLine($"Hello {i}");
             }
-            File.WriteAllTextAsync(filename, sb.ToString());
+            await File.WriteAllTextAsync(filename, sb.ToString());
             Console.WriteLine("Before reading from file");
             var result = await File.ReadAllTextAsync(filename);
             Console.WriteLine(result);
