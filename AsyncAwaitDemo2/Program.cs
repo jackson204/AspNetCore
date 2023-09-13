@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace AsyncAwaitDemo2
@@ -9,24 +10,15 @@ namespace AsyncAwaitDemo2
     {
         static async Task Main(string[] args)
         {
-            var path = @"C:\Users\s9740\RiderProjects\AspNetCore\AsyncAwaitDemo2\test.txt";
-            var result = await DownLoadHtmlAsync(path, "https://www.google.com");
-            Console.WriteLine(result);
-            Console.WriteLine("Download complete");
+            var result = await DownLoadAsync();
+            Console.WriteLine("Completed");
         }
 
-        // private static async Task DownLoadHtmlAsync(string path, string url)
-        // {
-        //     using var httpClient = new HttpClient();
-        //     var html = await httpClient.GetStringAsync(url);
-        //     await File.WriteAllTextAsync(path, html);
-        // }
-        private static async Task<int> DownLoadHtmlAsync(string path, string url)
+        private static async Task<int> DownLoadAsync()
         {
-            using var httpClient = new HttpClient();
-            var html = await httpClient.GetStringAsync(url);
-            await File.WriteAllTextAsync(path, html);
-            return html.Length;
+            var httpClient = new HttpClient();
+            var result = await httpClient.GetStringAsync("https://www.google.com");
+            return result.Length;
         }
     }
 }
