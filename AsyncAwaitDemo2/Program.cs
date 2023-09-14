@@ -16,7 +16,7 @@ namespace AsyncAwaitDemo2
 
         private static async Task<int> DownLoadAsync()
         {
-            var httpClient = new HttpClient();
+            using var httpClient = new HttpClient();
             var result = await httpClient.GetStringAsync("https://www.google.com");
             return result.Length;
         }
